@@ -144,32 +144,29 @@ abstract class Walk{
   move();
 } 
   
-class Fish implements Swim{
+mixin Fish implements Swim{
   @override
-  move(){
+   move(){
     print('fish can swim');
   }
   
 }
-class Lion  implements Walk{
+mixin Lion  implements Walk{
   @override
-  move(){
+   move(){
     print('lion can walk');
   }
   
 }
-class SeaLion extends Lion with Fish {
+class SeaLion with Fish,Lion {
   @override
-  move(){
+   move(){
+    super.move();
     print('seaLion can both walk and swim');
   }
 }
 void main(){
   SeaLion sea = SeaLion();
   sea.move();
-  Lion lion = Lion();
-  lion.move();
-  Fish fish = Fish();
-  fish.move();
 }
 
